@@ -6,9 +6,12 @@ import { Games } from '../api/games.js';
 // App component - represents the whole app
 class App extends Component {
 
-    state = {
-        newName: ''
-    };
+    constructor() {
+        super();
+        this.state = {
+            newName: ''
+        };
+    }
 
     render() {
         const {games} = this.props;
@@ -24,7 +27,9 @@ class App extends Component {
                 <form onSubmit={evt => {
                     evt.preventDefault();
                 }}>
-                    <input onChange={() => {}} value="" />
+                <input value={this.state.newName} onChange={evt => {
+                    this.setState({newName: evt.target.value});
+                }} value="" />
                     <input type="submit" />
                 </form>
             </div>
